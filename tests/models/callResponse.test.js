@@ -12,7 +12,7 @@ describe("CallResponse Model Test", () => {
       callSid: "CA123456789",
       transcription: "Yes, I took my medication.",
       recordingUrl: "https://recording-server.com/recording.mp3",
-      callStatus: "completed",
+      callStatus: "call-status",
     };
 
     const callResponse = new CallResponse(callData);
