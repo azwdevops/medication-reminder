@@ -1,27 +1,28 @@
-import "dotenv/config";
-import express from "express";
-import cors from "cors";
-import { dbConnect } from "#utils/dbConnect.js";
-import routes from "#routes/index.js";
+import "dotenv/config"; // Load environment variables from .env file
+import express from "express"; // Import Express framework for building the API
+import cors from "cors"; // Import CORS middleware to handle cross-origin requests
+import { dbConnect } from "#utils/dbConnect.js"; // Import the database connection utility
+import routes from "#routes/index.js"; // Import the route definitions
 
-const app = express();
+const app = express(); // Initialize the Express app
 
-// Middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true })); // To handle URL-encoded data
+// Middleware setup
+app.use(cors()); // Enable CORS to allow requests from different origins
+app.use(express.json()); // Parse incoming JSON requests
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data (for form submissions)
 
-// Routes
-app.use("/", routes);
+// Define the routes for the app
+app.use("/", routes); // Use the imported routes for handling requests
 
-// Connect to database
-dbConnect();
+// Connect to the database
+dbConnect(); // Establish a connection to the MongoDB database
 
-const PORT = process.env.PORT || 5000;
+// Define the port for the server to listen on
+const PORT = process.env.PORT || 5000; // Use the PORT from environment variable or default to 5000
 
-// Start Server
+// Start the Express server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`); // Log a message once the server is running
 });
 
-export default app;
+export default app; // Export the app for testing or further use
