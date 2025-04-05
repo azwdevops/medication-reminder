@@ -11,7 +11,7 @@ describe("CallResponse Model Test", () => {
       phoneNumber: "+254712345678",
       callSid: "CA123456789",
       transcription: "Yes, I took my medication.",
-      recordingUrl: "https://twilio-server.com/recording.mp3",
+      recordingUrl: "https://recording-server.com/recording.mp3",
       callStatus: "completed",
     };
 
