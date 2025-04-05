@@ -23,9 +23,9 @@ const twilioService = {
         from: process.env.TWILIO_PHONE_NUMBER,
         to: phoneNumber,
       });
-      console.log(`📩 SMS Sent to ${phoneNumber}`);
+      console.log(`SMS Sent to ${phoneNumber}`);
     } catch (error) {
-      console.error("❌ Failed to send SMS:", error.message);
+      console.error("Failed to send SMS:", error.message);
     }
   },
 };

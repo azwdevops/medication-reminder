@@ -1,4 +1,4 @@
-import CallResponse from "../models/CallResponse.js";
+import CallResponse from "#models/callResponse.js";
 
 const responseController = {
   getAllResponses: async (req, res) => {
@@ -6,7 +6,7 @@ const responseController = {
       const responses = await CallResponse.find(); // Fetch all call responses
       res.status(200).json(responses);
     } catch (error) {
-      console.error("❌ Error fetching responses:", error);
+      console.error("Error fetching responses:", error);
       res.status(500).json({ error: "Failed to fetch responses" });
     }
   },
@@ -35,7 +35,7 @@ const responseController = {
         unclearCount,
       });
     } catch (error) {
-      console.error("❌ Error analyzing responses:", error);
+      console.error("Error analyzing responses:", error);
       res.status(500).json({ error: "Failed to analyze responses" });
     }
   },

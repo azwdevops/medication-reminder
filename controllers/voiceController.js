@@ -1,6 +1,6 @@
 import twilio from "twilio";
-import CallResponse from "../models/CallResponse.js";
-import twilioService from "../services/twilioService.js";
+import CallResponse from "#models/callResponse.js";
+import twilioService from "#services/twilioService.js";
 
 const voiceController = {
   handleVoiceRequest: (req, res) => {
@@ -45,26 +45,26 @@ const voiceController = {
   handleCallStatus: async (req, res) => {
     const { Called, CallSid, CallStatus } = req.body;
 
-    console.log(`📢 Call Status Update: ${CallStatus} | Number: ${Called} | Call SID: ${CallSid}`);
+    console.log(`Call Status Update: ${CallStatus} | Number: ${Called} | Call SID: ${CallSid}`);
 
     switch (CallStatus) {
       case "completed":
-        console.log(`✅ Call was successfully completed with Call SID: ${CallSid}`);
+        console.log(`Call was successfully completed with Call SID: ${CallSid}`);
         break;
 
       case "no-answer":
       case "busy":
       case "failed":
-        console.log(`⚠️ Call to ${Called} was not successful. Sending SMS Reminder...`);
+        console.log(`Call to ${Called} was not successful. Sending SMS Reminder...`);
         await twilioService.sendMissedCallSMS(Called);
         break;
 
       case "canceled":
-        console.log(`🚫 Call to ${Called} was canceled.`);
+        console.log(`Call to ${Called} was canceled.`);
         break;
 
       default:
-        console.log(`ℹ️ Unknown call status received: ${CallStatus}`);
+        console.log(`Unknown call status received: ${CallStatus}`);
     }
 
     res.status(200).send("OK");
@@ -83,11 +83,11 @@ const voiceController = {
       });
 
       await response.save();
-      console.log("✅ Transcription saved:", response);
+      console.log("Transcription saved:", response);
 
       res.status(200).json({ message: "Transcription saved successfully" });
     } catch (error) {
-      console.error("❌ Error saving transcription:", error);
+      console.error("Error saving transcription:", error);
       res.status(500).json({ error: "Failed to save transcription" });
     }
   },

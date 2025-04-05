@@ -1,6 +1,6 @@
 import express from "express";
-import voiceController from "../controllers/voiceController.js";
-import responseController from "../controllers/responseController.js";
+import voiceController from "#controllers/voiceController.js";
+import responseController from "#controllers/responseController.js";
 
 const router = express.Router();
 
